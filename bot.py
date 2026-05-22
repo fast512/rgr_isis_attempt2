@@ -16,7 +16,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(MESSAGE)
 
 def main():
-    if not BOT_TOKEN or BOT_TOKEN == "7974484438:AAEdNnyEXKih6Zy9AYQt4rnHgE1icm3qlsQ":
+    if not BOT_TOKEN:
         print(" Ошибка: укажите токен в файле config.py")
         return
     
