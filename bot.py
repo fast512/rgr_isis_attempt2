@@ -1,9 +1,13 @@
 import logging
 from telegram import Update
 from telegram.ext import Application, MessageHandler, filters, ContextTypes
-
-
 from config import BOT_TOKEN
+
+# Настройка логирования
+logging.basicConfig(
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    level=logging.INFO
+)
 
 MESSAGE = (
     'Система «Контроль версий ПО АСДУ ДПМ „Диалог“» разработана '
@@ -17,7 +21,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 def main():
     if not BOT_TOKEN:
-        print(" Ошибка: укажите токен в файле config.py")
+        print("Ошибка: укажите токен в файле config.py")
         return
     
     app = Application.builder().token(BOT_TOKEN).build()
@@ -25,3 +29,6 @@ def main():
     
     print("Бот запущен!")
     app.run_polling(allowed_updates=Update.ALL_TYPES)
+
+if __name__ == '__main__':
+    main()
